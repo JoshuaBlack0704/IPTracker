@@ -252,3 +252,8 @@ C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\zh-Hans\Microsoft.
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\build\build\web.config
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\build\build\API.deps.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\build\build\API.runtimeconfig.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\build\build\appsettings.Development.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Debug\net5.0\build\build\appsettings.json
