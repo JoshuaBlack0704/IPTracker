@@ -131,7 +131,6 @@ using System.Net.Http.Json;
     AuthPacket authPacket;
     UserForm userform;
     KeyForm keyForm;
-    string name;
 
     async void CheckCredentials()
     {
@@ -140,8 +139,16 @@ using System.Net.Http.Json;
         
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
-        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
-        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        try
+        {
+            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No Response from api");
+        }
+        
         Console.WriteLine(authPacket.Success);
         StateHasChanged();
     }
@@ -153,16 +160,44 @@ using System.Net.Http.Json;
         
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
-        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
-        
-        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        try
+        {
+            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
         Console.WriteLine(authPacket.Success);
         StateHasChanged();
     }
 
     async void ClaimAlias()
     {
+        ClaimPacket packet = new ClaimPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+            InstanceID = keyForm.key,
+        };
         
+        var client = ClientFactory.CreateClient();
+        client.BaseAddress = new Uri("http://localhost:5005/api/claim");
+
+        try
+        {
+            var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
+            packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        
+        Console.WriteLine(packet.Success);
+        authPacket.Success = packet.Success;
+        StateHasChanged();
     }
 
     async void GetIP()

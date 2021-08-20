@@ -48,7 +48,7 @@
                 <ValidationSummary/>
                 <div class="box controlForm">                    
                     <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="InstanceKey" @bind-Value="keyForm.key"></InputText>
-                    <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="Alias" @bind-Value="keyForm.key"></InputText>
+                    <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="Alias" @bind-Value="keyForm.alias"></InputText>
                 </div>
                 <div class="box controlForm">                    
                     <button class="controlButton buttonStyle" @onclick="ClaimAlias" type="submit">Claim Alias for User</button>
@@ -63,7 +63,6 @@
     AuthPacket authPacket;
     UserForm userform;
     KeyForm keyForm;
-    string name;
 
     async void CheckCredentials()
     {
@@ -72,8 +71,16 @@
         
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
-        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
-        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        try
+        {
+            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No Response from api");
+        }
+        
         Console.WriteLine(authPacket.Success);
         StateHasChanged();
     }
@@ -85,16 +92,44 @@
         
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
-        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
-        
-        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        try
+        {
+            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
         Console.WriteLine(authPacket.Success);
         StateHasChanged();
     }
 
     async void ClaimAlias()
     {
+        ClaimPacket packet = new ClaimPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+            InstanceID = keyForm.key,
+        };
         
+        var client = ClientFactory.CreateClient();
+        client.BaseAddress = new Uri("http://localhost:5005/api/claim");
+
+        try
+        {
+            var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
+            packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        
+        Console.WriteLine(packet.Success);
+        authPacket.Success = packet.Success;
+        StateHasChanged();
     }
 
     async void GetIP()

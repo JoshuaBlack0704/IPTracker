@@ -6,5 +6,7 @@ namespace UI.Client.FormModels
     {
         [Required]
         public string key { get; set; }
+        [Required]
+        public string alias { get; set; }
     }
 }
