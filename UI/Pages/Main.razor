@@ -1,0 +1,113 @@
+﻿@page "/Main"
+@using UI.Client.FormModels
+@using SharedModels
+@using System.Text.Json
+@using System.Text.Json.Serialization;
+@using System.Net.Http.Json
+@inject IHttpClientFactory ClientFactory
+
+<div class="main">
+    <div class="box top">
+        <p class="ipDisplay">192.168.1.1</p>
+    </div>
+    <div class="bottom">
+        <div class="authGrid">
+            <div class="authForms">
+                <EditForm Model="@userform">
+                    <DataAnnotationsValidator/>
+                    <ValidationSummary/>
+                    <div class="authFormSection">                    
+                        <InputText placeholder="Username" @bind-Value="userform.UserName">Username</InputText>
+                    </div>
+                    <div class="authFormSection">                    
+                        <InputText placeholder="Password" @bind-Value="userform.Password">Password</InputText>
+                    </div>
+                    <div class="authFormSection">                    
+                        <button class="authButton buttonStyle" @onclick="CheckCredentials" type="submit">Cache User</button>
+                        <button class="authButton buttonStyle" @onclick="AddCredentials" type="submit">Add User</button>
+                    </div>
+                </EditForm>
+            </div>
+            @if (authPacket.Success)
+            {
+                <div class="box authResult successState">
+                    Success
+                </div>
+            }
+            else
+            {
+                <div class="box authResult failureState">
+                    Failure
+                </div>
+            }
+            
+        </div>
+        <div class="controlGrid">
+            <EditForm Model="@keyForm" OnValidSubmit="@AddCredentials">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+                <div class="box controlForm">                    
+                    <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="InstanceKey" @bind-Value="keyForm.key"></InputText>
+                    <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="Alias" @bind-Value="keyForm.key"></InputText>
+                </div>
+                <div class="box controlForm">                    
+                    <button class="controlButton buttonStyle" @onclick="ClaimAlias" type="submit">Claim Alias for User</button>
+                    <button class="controlButton buttonStyle" @onclick="GetIP" type="submit">Get IP for Alias</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code{
+    AuthPacket authPacket;
+    UserForm userform;
+    KeyForm keyForm;
+    string name;
+
+    async void CheckCredentials()
+    {
+        var client = ClientFactory.CreateClient();
+        client.BaseAddress = new Uri("http://localhost:5005/api/auth");
+        
+        authPacket.UserName = userform.UserName;
+        authPacket.Password = userform.Password;
+        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        Console.WriteLine(authPacket.Success);
+        StateHasChanged();
+    }
+
+    async void AddCredentials()
+    {
+        var client = ClientFactory.CreateClient();
+        client.BaseAddress = new Uri("http://localhost:5005/api/user");
+        
+        authPacket.UserName = userform.UserName;
+        authPacket.Password = userform.Password;
+        var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+        
+        authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        Console.WriteLine(authPacket.Success);
+        StateHasChanged();
+    }
+
+    async void ClaimAlias()
+    {
+        
+    }
+
+    async void GetIP()
+    {
+        
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        authPacket = new AuthPacket();
+        userform = new UserForm();
+        keyForm = new KeyForm();
+        return base.OnInitializedAsync();
+    }
+
+}

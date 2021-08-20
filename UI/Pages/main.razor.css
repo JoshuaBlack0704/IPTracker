@@ -1,0 +1,98 @@
+﻿.main {
+    display: grid;
+    grid-template-rows: [display] 4fr [controls] 1fr;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+}
+
+.box {
+    #border: black dotted 5px;
+}
+
+.top {
+    grid-row: display;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom {
+    grid-row: controls;
+    display: grid;
+    grid-template-columns: [left] 1fr [right] 2fr;
+}
+
+.controlGrid {
+    grid-column: right;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.controlForm{
+    display: flex;
+    justify-content: center;
+}
+
+.controlButton {
+    width: 50%;
+}
+
+.authGrid {
+    grid-column: left;
+    display: grid;
+    grid-template-columns: [left] 1fr [right] 1fr
+}
+.authForms{
+    grid-column: left;
+}
+.authFormSection{
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+ }
+.authResult {
+    grid-column: right;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    justify-self: center;
+}
+
+.ipDisplay {
+    background-color: #bfc9b3;
+    padding: 5% 20%;
+    border-radius: 35%;
+    text-align: center;
+    margin: auto;
+    font-family: Arial, serif;
+    font-size: 500%;
+    border: black solid 5px;
+}
+
+.buttonStyle {
+    background-color: #13bda0;
+    padding: 5% 10%;
+}
+
+    .buttonStyle:hover {
+        background-color: #19ffd9;
+    }
+
+    .buttonStyle:active {
+        background-color: #ff1919;
+    }
+
+.successState {
+    background-color: green;
+    font-family: Arial, serif;
+    font-size: 300%;
+}
+
+.failureState {
+    background-color: red;
+    font-family: Arial, serif;
+    font-size: 300%;
+}

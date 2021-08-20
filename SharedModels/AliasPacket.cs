@@ -1,0 +1,9 @@
+﻿
+namespace SharedModels
+{
+    class AliasPacket
+    {
+    }
+}
+
+
