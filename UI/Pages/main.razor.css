@@ -16,6 +16,15 @@
     justify-content: space-around;
     align-items: center;
 }
+.pingAlias{
+    background-color: #13bda0;
+    width: 10%;
+    text-align: center;
+    border-radius: 10px;
+    border: black solid 5px;
+    padding-top: 10px;
+    margin: auto;
+}
 
 .bottom {
     grid-row: controls;

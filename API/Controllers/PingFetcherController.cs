@@ -25,7 +25,7 @@ namespace API.Controllers
         {
             Console.WriteLine($"Recieved request for address of alias: {packet.Alias} from user: {packet.AuthPacket.UserName}");
             var server = new MongoDataAccess.MongoContext(configuration.GetConnectionString("mongo"));
-            var auth = await MongoDataAccess.MongoUserManager.CheckCredentialsAny(server, packet.AuthPacket.UserName, packet.AuthPacket.Password);
+            var auth = await server.CheckCredentialsAny(packet.AuthPacket.UserName, packet.AuthPacket.Password);
             packet.AuthPacket.Success = auth != ObjectId.Empty;
             if (packet.AuthPacket.Success == false)
             {

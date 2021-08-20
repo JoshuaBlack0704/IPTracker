@@ -492,19 +492,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Josh\\.nuget\\packages\\": {}
+    "C:\\Users\\knigh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
+      "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
       "projectName": "PingMaster",
-      "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
-      "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\obj\\",
+      "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
+      "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

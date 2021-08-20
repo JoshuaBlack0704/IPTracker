@@ -492,19 +492,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Josh\\.nuget\\packages\\": {}
+    "C:\\Users\\knigh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
       "projectName": "MongoDataAccess",
-      "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
-      "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\obj\\",
+      "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
+      "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
