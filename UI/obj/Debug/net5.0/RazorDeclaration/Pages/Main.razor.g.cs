@@ -131,17 +131,16 @@ using System.Net.Http.Json;
     AuthPacket authPacket;
     UserForm userform;
     KeyForm keyForm;
+    RetrievalPacket retrievalPacket;
+    HttpClient client;
 
     async void CheckCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/auth");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync("http://localhost:5005/api/auth", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -155,14 +154,11 @@ using System.Net.Http.Json;
 
     async void AddCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/user");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync("http://localhost:5005/api/user", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -181,10 +177,6 @@ using System.Net.Http.Json;
             Alias = keyForm.alias,
             InstanceID = keyForm.key,
         };
-        
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/claim");
-
         try
         {
             var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
@@ -194,7 +186,6 @@ using System.Net.Http.Json;
         {
             Console.WriteLine("No response from api");
         }
-        
         Console.WriteLine(packet.Success);
         authPacket.Success = packet.Success;
         StateHasChanged();
@@ -202,14 +193,31 @@ using System.Net.Http.Json;
 
     async void GetIP()
     {
-        
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync("http://localhost:5005/api/fetch", retrievalPacket);
+            retrievalPacket = await response.Content.ReadFromJsonAsync<RetrievalPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        authPacket.Success = retrievalPacket.Success;
+        StateHasChanged();
     }
 
     protected override Task OnInitializedAsync()
     {
         authPacket = new AuthPacket();
         userform = new UserForm();
-        keyForm = new KeyForm();
+        keyForm = new KeyForm() {key = "InstanceKey"};
+        client = ClientFactory.CreateClient();
+        retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
         return base.OnInitializedAsync();
     }
 

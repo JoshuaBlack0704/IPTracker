@@ -34,7 +34,7 @@ namespace API.Controllers
                 return packet;
             }
 
-            server.SetDatabase("ExternalIpTracking");
+            server.SetDatabase("ExternalIPTracking");
             var pings = server.database.GetCollection<PingEntry>("Pings");
             var keyFilter = Builders<PingEntry>.Filter.Eq("InstanceKey", packet.InstanceID);
             var isReal = await pings.CountDocumentsAsync(keyFilter) > 0;
