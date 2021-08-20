@@ -23,7 +23,8 @@ C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaste
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.AssemblyInfo.cs
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.csproj.CoreCompileInputs.cache
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.dll
-C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\refint\PingMaster.dll
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.pdb
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.genruntimeconfig.cache
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\ref\PingMaster.dll
+C:\Users\Josh\Documents\Github\IPTracker\PingMaster\bin\Release\net5.0\ref\PingMaster.dll
+C:\Users\Josh\Documents\Github\IPTracker\PingMaster\obj\Release\net5.0\PingMaster.csproj.CopyComplete

@@ -15,9 +15,11 @@ namespace PingMaster
         static string proccessKey;
         static void Main(string[] args)
         {
+            var endpoint = Environment.GetEnvironmentVariable("Endpoint");
+            Console.WriteLine($"Using URL: {endpoint}");
             proccessKey = BCrypt.Net.BCrypt.HashPassword(random.Next(0, int.MaxValue).ToString(), 11);
             Console.WriteLine(proccessKey);
-            client.BaseAddress = new Uri("http://localhost:5005/api/ping");
+            client.BaseAddress = new Uri(endpoint);
             void Ping()
             {
                 var x = Task.Run(() => client.PostAsJsonAsync(client.BaseAddress, proccessKey));
