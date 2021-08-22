@@ -176,6 +176,16 @@
             "rid": "win"
           }
         }
+      },
+      "SharedModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SharedModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedModels.dll": {}
+        }
       }
     }
   },
@@ -483,28 +493,34 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SharedModels/1.0.0": {
+      "type": "project",
+      "path": "../SharedModels/SharedModels.csproj",
+      "msbuildProject": "../SharedModels/SharedModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "BCrypt.Net-Next >= 4.0.2",
-      "MongoDB.Driver >= 2.13.1"
+      "MongoDB.Driver >= 2.13.1",
+      "SharedModels >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Josh\\.nuget\\packages\\": {}
+    "C:\\Users\\knigh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
+      "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
       "projectName": "PingMaster",
-      "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
-      "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\PingMaster\\obj\\",
+      "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\PingMaster.csproj",
+      "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\PingMaster\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -517,7 +533,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
+              "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

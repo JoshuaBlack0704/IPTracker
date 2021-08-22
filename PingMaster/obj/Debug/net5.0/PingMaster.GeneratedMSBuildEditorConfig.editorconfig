@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = PingMaster
-build_property.ProjectDir = C:\Users\Josh\Documents\Github\IPTracker\PingMaster\
+build_property.ProjectDir = C:\Users\knigh\Documents\Github\IPTracker\PingMaster\

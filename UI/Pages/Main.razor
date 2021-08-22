@@ -82,6 +82,7 @@
     bool aliasDisplay;
     List<string> aliasList;
     bool successSate;
+    string baseAddress;
 
     async void CheckCredentials()
     {
@@ -89,7 +90,7 @@
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/auth", authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/auth", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -108,7 +109,7 @@
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/user", authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/user", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -130,7 +131,7 @@
         };
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/claim", packet);
             packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
         }
         catch (Exception e)
@@ -156,7 +157,7 @@
         };
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/list", packet);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/list", packet);
             packet = await response.Content.ReadFromJsonAsync<AliasListPacket>();
         }
         catch (Exception e)
@@ -186,7 +187,7 @@
         };
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/fetch", retrievalPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/fetch", retrievalPacket);
             retrievalPacket = await response.Content.ReadFromJsonAsync<RetrievalPacket>();
         }
         catch (Exception e)
@@ -206,6 +207,7 @@
         retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
         aliasDisplay = false;
         aliasList = new List<string>();
+        baseAddress = "https://ipapiservice.azurewebsites.net";
         return base.OnInitializedAsync();
     }
 

@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading;
+using SharedModels;
 
-namespace API.Controllers
+namespace API.Controllers0
 {
     using Microsoft.Extensions.Configuration;
     using Models;
@@ -11,7 +12,7 @@ namespace API.Controllers
     using MongoDB.Driver;
     using System.Threading.Tasks;
 
-    [Route("api/ping")]
+    [Route("api")]
     [ApiController]
     public class PingRecieverController : ControllerBase
     {
@@ -23,12 +24,14 @@ namespace API.Controllers
             configuration = config;
             server = s;
         }
-        [HttpPost]
-        public async Task RecievePing([FromBody]string clientKey)
+        
+        [HttpPost("ping")]
+        public async Task<PingResponse> RecievePing([FromBody]string clientKey)
         {
             string host = HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
             Task.Run(() => Console.WriteLine($"Recieved ping from {host}"));
             await AddPing(server, clientKey, host);
+            return new PingResponse() {message = "done"};
         }
 
         public async Task AddPing(MongoDataAccess.MongoContext server, string clientKey, string hostIP)

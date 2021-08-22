@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PingMaster
@@ -7,6 +10,7 @@ namespace PingMaster
     using System.Net.Http;
     using System.Net.Http.Json;
     using System.Threading;
+    using SharedModels;
 
     class Program
     {
@@ -15,18 +19,49 @@ namespace PingMaster
         static string proccessKey;
         static void Main(string[] args)
         {
+            if (File.Exists("key.txt") == false)
+            {
+                Console.WriteLine("Creating new key\n");
+                using (FileStream fs = File.Create("key.txt"))     
+                {    
+                    // Add some text to file    
+                    Byte[] key = new UTF8Encoding(true).GetBytes(BCrypt.Net.BCrypt.HashPassword(random.Next(0, int.MaxValue).ToString(), 11));    
+                    fs.Write(key, 0, key.Length);    
+                } 
+            }
+            else
+            {
+                Console.WriteLine("pre-generated key found\n");
+            }
+
+            string letter;
+            using (StreamReader sr = File.OpenText("key.txt"))     
+            {
+                while ((letter = sr.ReadLine()) != null)
+                {
+                    proccessKey += letter;
+                    Console.WriteLine(letter);
+                }
+            } 
+            
+            Console.WriteLine("\n" + proccessKey);
+            
             var endpoint = Environment.GetEnvironmentVariable("Endpoint");
+
             Console.WriteLine($"Using URL: {endpoint}");
-            proccessKey = BCrypt.Net.BCrypt.HashPassword(random.Next(0, int.MaxValue).ToString(), 11);
             Console.WriteLine(proccessKey);
             client.BaseAddress = new Uri(endpoint);
             void Ping()
             {
+                Console.WriteLine($"Pinging {client.BaseAddress}");
                 var x = Task.Run(() => client.PostAsJsonAsync(client.BaseAddress, proccessKey));
                 x.Wait();
+                var response = x.Result;
+                var message = Task.Run(() => response.Content.ReadFromJsonAsync<PingResponse>());
+                message.Wait();
+                Console.WriteLine(message.Result.message);
             }
-
-
+            
             while (true)
             {
                 try

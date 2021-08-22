@@ -1,0 +1,1 @@
+﻿docker run -dp 100:5000 -e "Endpoint=https://externaliptrackingserviceplan.azurewebsites.net/api/ping" --name UI --network net jstorm0704/externaliptracking:ui

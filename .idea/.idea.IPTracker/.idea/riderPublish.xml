@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/API/build" />
         <option value="$PROJECT_DIR$/PingMaster/build" />
+        <option value="$PROJECT_DIR$/UI/build" />
       </list>
     </option>
   </component>

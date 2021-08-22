@@ -10,7 +10,7 @@
 }
 
 .box[b-kryesyjnmw] {
-    border: black dotted 5px;
+    #border: black dotted 5px;
 }
 
 .top[b-kryesyjnmw] {
@@ -18,6 +18,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.pingAlias[b-kryesyjnmw]{
+    background-color: #13bda0;
+    width: 10%;
+    text-align: center;
+    border-radius: 10px;
+    border: black solid 5px;
+    padding-top: 10px;
+    margin: auto;
 }
 
 .bottom[b-kryesyjnmw] {
@@ -29,16 +38,16 @@
 .controlGrid[b-kryesyjnmw] {
     grid-column: right;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-direction: column;
 }
-
-.controlInput[b-kryesyjnmw] {
-    text-align: center;
+.controlForm[b-kryesyjnmw]{
+    display: flex;
+    justify-content: center;
 }
 
 .controlButton[b-kryesyjnmw] {
-    align-self: center;
-    margin: 1%;
+    width: 50%;
 }
 
 .authGrid[b-kryesyjnmw] {
@@ -46,18 +55,14 @@
     display: grid;
     grid-template-columns: [left] 1fr [right] 1fr
 }
-
-.authButtons[b-kryesyjnmw] {
+.authForms[b-kryesyjnmw]{
     grid-column: left;
+}
+.authFormSection[b-kryesyjnmw]{
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-
-.authInput[b-kryesyjnmw] {
-    align-self: center;
-}
-
+    justify-content: center;
+    margin: 3%;
+ }
 .authResult[b-kryesyjnmw] {
     grid-column: right;
     border-radius: 10%;
@@ -66,10 +71,6 @@
     align-items: center;
     width: 80%;
     justify-self: center;
-}
-
-.authButton[b-kryesyjnmw] {
-    align-self: center;
 }
 
 .ipDisplay[b-kryesyjnmw] {

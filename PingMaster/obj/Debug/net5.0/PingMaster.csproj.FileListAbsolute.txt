@@ -58,3 +58,5 @@ C:\Users\knigh\Documents\Github\IPTracker\PingMaster\obj\Debug\net5.0\PingMaster
 C:\Users\knigh\Documents\Github\IPTracker\PingMaster\obj\Debug\net5.0\ref\PingMaster.dll
 C:\Users\knigh\Documents\Github\IPTracker\PingMaster\obj\Debug\net5.0\PingMaster.pdb
 C:\Users\knigh\Documents\Github\IPTracker\PingMaster\obj\Debug\net5.0\PingMaster.genruntimeconfig.cache
+C:\Users\knigh\Documents\Github\IPTracker\PingMaster\bin\Debug\net5.0\SharedModels.dll
+C:\Users\knigh\Documents\Github\IPTracker\PingMaster\bin\Debug\net5.0\SharedModels.pdb

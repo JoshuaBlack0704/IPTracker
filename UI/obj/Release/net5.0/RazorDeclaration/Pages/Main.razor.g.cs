@@ -13,78 +13,106 @@ namespace UI.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 1 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 2 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 3 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 4 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 5 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 6 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 7 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 8 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 9 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using UI;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 10 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
 using UI.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 2 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using UI.Client.FormModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+using SharedModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+using System.Text.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+using System.Text.Json.Serialization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+using System.Net.Http.Json;
 
 #line default
 #line hidden
@@ -98,13 +126,150 @@ using UI.Client.FormModels;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 76 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
       
-    string name;
+    AuthPacket authPacket;
+    UserForm userform;
+    KeyForm keyForm;
+    RetrievalPacket retrievalPacket;
+    HttpClient client;
+    bool aliasDisplay;
+    List<string> aliasList;
+    bool successSate;
+    string baseAddress;
+
+    async void CheckCredentials()
+    {
+        authPacket.UserName = userform.UserName;
+        authPacket.Password = userform.Password;
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/auth", authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No Response from api");
+        }
+        
+        Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
+        StateHasChanged();
+    }
+
+    async void AddCredentials()
+    {
+        authPacket.UserName = userform.UserName;
+        authPacket.Password = userform.Password;
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/user", authPacket);
+            authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
+        StateHasChanged();
+    }
+
+    async void ClaimAlias()
+    {
+        ClaimPacket packet = new ClaimPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+            InstanceID = keyForm.key,
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/claim", packet);
+            packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        Console.WriteLine(packet.Success);
+        successSate = packet.Success;
+        StateHasChanged();
+    }
+
+    async void GetAliases()
+    {
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        var packet = new AliasListPacket()
+        {
+            RetrievalPacket = retrievalPacket,
+            Aliases = new List<string>()
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/list", packet);
+            packet = await response.Content.ReadFromJsonAsync<AliasListPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        
+        Console.WriteLine($"Get Aliases returned {packet.Aliases.Count()} Aliases");
+        aliasList.Clear();
+        foreach (var alias in packet.Aliases)
+        {
+            Console.WriteLine(alias);
+            aliasList.Add(alias);
+        }
+        aliasDisplay = true;
+        successSate = packet.Success;
+        StateHasChanged();
+    }
+
+    async void GetIP()
+    {
+        aliasDisplay = false;
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/fetch", retrievalPacket);
+            retrievalPacket = await response.Content.ReadFromJsonAsync<RetrievalPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        successSate = retrievalPacket.Success;
+        StateHasChanged();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        authPacket = new AuthPacket();
+        userform = new UserForm();
+        keyForm = new KeyForm() {key = "InstanceKey"};
+        client = ClientFactory.CreateClient();
+        retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
+        aliasDisplay = false;
+        aliasList = new List<string>();
+        baseAddress = "https://ipapiservice.azurewebsites.net";
+        return base.OnInitializedAsync();
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpClientFactory ClientFactory { get; set; }
     }
 }
 #pragma warning restore 1591

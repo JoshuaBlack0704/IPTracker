@@ -10,3 +10,15 @@ C:\Users\Josh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\Mong
 C:\Users\Josh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.pdb
 C:\Users\Josh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\ref\MongoDataAccess.dll
 C:\Users\Josh\Documents\Github\IPTracker\MongoDataAccess\bin\Release\net5.0\ref\MongoDataAccess.dll
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\bin\Release\net5.0\MongoDataAccess.deps.json
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\bin\Release\net5.0\MongoDataAccess.dll
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\bin\Release\net5.0\ref\MongoDataAccess.dll
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\bin\Release\net5.0\MongoDataAccess.pdb
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.csproj.AssemblyReference.cache
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.AssemblyInfoInputs.cache
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.AssemblyInfo.cs
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.dll
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\ref\MongoDataAccess.dll
+C:\Users\knigh\Documents\Github\IPTracker\MongoDataAccess\obj\Release\net5.0\MongoDataAccess.pdb
