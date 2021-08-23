@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading;
+using MongoDB.Bson.Serialization.Serializers;
 using SharedModels;
 
 namespace API.Controllers0
@@ -60,6 +61,7 @@ namespace API.Controllers0
                     Key = clientKey,
                     Alias = "",
                     ClaimingUser = ObjectId.Empty,
+                    LastUpdated = DateTime.UtcNow
                 };
                 await pings.InsertOneAsync(ping);
             }

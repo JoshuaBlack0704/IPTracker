@@ -13,7 +13,6 @@ namespace UI
     {
         public static void Main(string[] args)
         {
-            Environment.SetEnvironmentVariable("Endpoint", "https://externaliptrackingserviceplan.azurewebsites.net");
             CreateHostBuilder(args).Build().Run();
         }
 

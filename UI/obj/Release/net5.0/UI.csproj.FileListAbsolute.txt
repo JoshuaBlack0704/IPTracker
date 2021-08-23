@@ -119,3 +119,5 @@ C:\Users\knigh\Documents\Github\IPTracker\UI\bin\Release\net5.0\build\appsetting
 C:\Users\knigh\Documents\Github\IPTracker\UI\bin\Release\net5.0\build\appsettings.json
 C:\Users\knigh\Documents\Github\IPTracker\UI\bin\Release\net5.0\build\UI.deps.json
 C:\Users\knigh\Documents\Github\IPTracker\UI\bin\Release\net5.0\build\UI.runtimeconfig.json
+C:\Users\Josh\Documents\Github\IPTracker\UI\bin\Release\net5.0\SharedModels.dll
+C:\Users\Josh\Documents\Github\IPTracker\UI\bin\Release\net5.0\SharedModels.pdb

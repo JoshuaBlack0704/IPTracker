@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\API\\API.csproj": {}
+    "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\API\\API.csproj": {
+    "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\API\\obj\\",
+        "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj": {
-                "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj"
+              "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj": {
+                "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj"
               },
-              "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
-                "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj"
+              "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj"
               }
             }
           }
@@ -82,17 +82,17 @@
         }
       }
     },
-    "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj": {
+    "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
         "projectName": "MongoDataAccess",
-        "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
-        "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\MongoDataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj",
+        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -146,17 +146,17 @@
         }
       }
     },
-    "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
+    "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
+        "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
         "projectName": "SharedModels",
-        "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
-        "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\obj\\",
+        "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
+        "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

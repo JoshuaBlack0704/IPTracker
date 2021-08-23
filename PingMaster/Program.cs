@@ -21,7 +21,7 @@ namespace PingMaster
         {
             if (File.Exists("key.txt") == false)
             {
-                Console.WriteLine("Creating new key\n");
+                Console.WriteLine("Creating new key:\n");
                 using (FileStream fs = File.Create("key.txt"))     
                 {    
                     // Add some text to file    
@@ -31,7 +31,7 @@ namespace PingMaster
             }
             else
             {
-                Console.WriteLine("pre-generated key found\n");
+                Console.WriteLine("pre-generated key found:\n");
             }
 
             string letter;
@@ -40,26 +40,22 @@ namespace PingMaster
                 while ((letter = sr.ReadLine()) != null)
                 {
                     proccessKey += letter;
-                    Console.WriteLine(letter);
                 }
             } 
             
-            Console.WriteLine("\n" + proccessKey);
+            Console.WriteLine(proccessKey + "\n");
             
             var endpoint = Environment.GetEnvironmentVariable("Endpoint");
 
             Console.WriteLine($"Using URL: {endpoint}");
-            Console.WriteLine(proccessKey);
             client.BaseAddress = new Uri(endpoint);
             void Ping()
             {
-                Console.WriteLine($"Pinging {client.BaseAddress}");
                 var x = Task.Run(() => client.PostAsJsonAsync(client.BaseAddress, proccessKey));
                 x.Wait();
                 var response = x.Result;
                 var message = Task.Run(() => response.Content.ReadFromJsonAsync<PingResponse>());
                 message.Wait();
-                Console.WriteLine(message.Result.message);
             }
             
             while (true)
@@ -73,7 +69,7 @@ namespace PingMaster
                     Console.WriteLine("\nTimeout\n");
                     Console.WriteLine(proccessKey);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(60000);
             }
 
         }

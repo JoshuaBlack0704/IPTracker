@@ -16,3 +16,5 @@ C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\runtimes\win\native\sn
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\runtimes\linux\native\libmongocrypt.so
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\runtimes\win\native\mongocrypt.dll
+C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\SharedModels.dll
+C:\Users\Josh\Documents\Github\IPTracker\PingMaster\build\SharedModels.pdb

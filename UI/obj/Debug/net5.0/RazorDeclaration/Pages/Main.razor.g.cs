@@ -13,105 +13,105 @@ namespace UI.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 1 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 2 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 3 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 4 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 5 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 6 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 7 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 8 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 9 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using UI;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\knigh\Documents\Github\IPTracker\UI\_Imports.razor"
+#line 10 "C:\Users\Josh\Documents\Github\IPTracker\UI\_Imports.razor"
 using UI.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 2 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using UI.Client.FormModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 3 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using SharedModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 4 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using System.Text.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 5 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using System.Text.Json.Serialization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 6 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
 using System.Net.Http.Json;
 
 #line default
@@ -126,7 +126,7 @@ using System.Net.Http.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "C:\Users\knigh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 77 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
       
     AuthPacket authPacket;
     UserForm userform;
@@ -261,7 +261,7 @@ using System.Net.Http.Json;
         retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
         aliasDisplay = false;
         aliasList = new List<string>();
-        baseAddress = "https://ipapiservice.azurewebsites.net";
+        baseAddress = Environment.GetEnvironmentVariable("Endpoint");
         return base.OnInitializedAsync();
     }
 

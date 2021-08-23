@@ -13,7 +13,8 @@
 .top {
     grid-row: display;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 .pingAlias{

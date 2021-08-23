@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\knigh\\.nuget\\packages\\": {}
+    "C:\\Users\\Josh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
+      "projectUniqueName": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
       "projectName": "SharedModels",
-      "projectPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
-      "packagesPath": "C:\\Users\\knigh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\knigh\\Documents\\Github\\IPTracker\\SharedModels\\obj\\",
+      "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj",
+      "packagesPath": "C:\\Users\\Josh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\knigh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Josh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

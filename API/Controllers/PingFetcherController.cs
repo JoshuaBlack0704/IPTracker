@@ -48,6 +48,7 @@ namespace API.Controllers
                 if (ping.ClaimingUser == auth)
                 {
                     packet.Ip = ping.HostIP;
+                    packet.LastUpdated = ping.LastUpdated;
                     packet.Success = true;
                     return packet;
                 }

@@ -1,11 +1,6 @@
 C:\Users\Josh\Documents\Github\IPTracker\API\build\API.exe
-C:\Users\Josh\Documents\Github\IPTracker\API\build\build\web.config
 C:\Users\Josh\Documents\Github\IPTracker\API\build\appsettings.Development.json
 C:\Users\Josh\Documents\Github\IPTracker\API\build\appsettings.json
-C:\Users\Josh\Documents\Github\IPTracker\API\build\build\API.deps.json
-C:\Users\Josh\Documents\Github\IPTracker\API\build\build\API.runtimeconfig.json
-C:\Users\Josh\Documents\Github\IPTracker\API\build\build\appsettings.Development.json
-C:\Users\Josh\Documents\Github\IPTracker\API\build\build\appsettings.json
 C:\Users\Josh\Documents\Github\IPTracker\API\build\API.dll
 C:\Users\Josh\Documents\Github\IPTracker\API\build\API.deps.json
 C:\Users\Josh\Documents\Github\IPTracker\API\build\API.runtimeconfig.json

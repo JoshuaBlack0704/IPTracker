@@ -41,11 +41,6 @@ C:\Users\Josh\Documents\Github\IPTracker\API\obj\Release\net5.0\API.dll
 C:\Users\Josh\Documents\Github\IPTracker\API\obj\Release\net5.0\API.pdb
 C:\Users\Josh\Documents\Github\IPTracker\API\obj\Release\net5.0\API.genruntimeconfig.cache
 C:\Users\Josh\Documents\Github\IPTracker\API\obj\Release\net5.0\ref\API.dll
-C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\web.config
-C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.deps.json
-C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.runtimeconfig.json
-C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.Development.json
-C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.json
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\ref\API.dll
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\Humanizer.dll
 C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -252,3 +247,8 @@ C:\Users\knigh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.deps.
 C:\Users\knigh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.runtimeconfig.json
 C:\Users\knigh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.Development.json
 C:\Users\knigh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\web.config
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.deps.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\API.runtimeconfig.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.Development.json
+C:\Users\Josh\Documents\Github\IPTracker\API\bin\Release\net5.0\build\appsettings.json
