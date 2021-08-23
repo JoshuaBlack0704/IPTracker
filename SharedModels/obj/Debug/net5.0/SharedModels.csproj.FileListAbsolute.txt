@@ -10,3 +10,15 @@ C:\Users\Josh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedMod
 C:\Users\Josh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\ref\SharedModels.dll
 C:\Users\Josh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.pdb
 C:\Users\Josh\Documents\Github\IPTracker\SharedModels\bin\Debug\net5.0\ref\SharedModels.dll
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\bin\Debug\net5.0\SharedModels.deps.json
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\bin\Debug\net5.0\SharedModels.dll
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\bin\Debug\net5.0\SharedModels.pdb
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.csproj.AssemblyReference.cache
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.AssemblyInfoInputs.cache
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.AssemblyInfo.cs
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.csproj.CoreCompileInputs.cache
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.dll
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\ref\SharedModels.dll
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\obj\Debug\net5.0\SharedModels.pdb
+C:\Users\knigh\Documents\Github\IPTracker\SharedModels\bin\Debug\net5.0\ref\SharedModels.dll

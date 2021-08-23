@@ -1,0 +1,1 @@
+﻿docker run -d --name ping -e "Endpoint=https://ipapiservice.azurewebsites.net/api/ping" --restart always jstorm0704/externaliptracking:pingmaster

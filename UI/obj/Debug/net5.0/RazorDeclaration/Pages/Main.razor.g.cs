@@ -126,22 +126,25 @@ using System.Net.Http.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
+#line 77 "C:\Users\Josh\Documents\Github\IPTracker\UI\Pages\Main.razor"
       
     AuthPacket authPacket;
     UserForm userform;
     KeyForm keyForm;
+    RetrievalPacket retrievalPacket;
+    HttpClient client;
+    bool aliasDisplay;
+    List<string> aliasList;
+    bool successSate;
+    string baseAddress;
 
     async void CheckCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/auth");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/auth", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -150,19 +153,17 @@ using System.Net.Http.Json;
         }
         
         Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
         StateHasChanged();
     }
 
     async void AddCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/user");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/user", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -170,6 +171,7 @@ using System.Net.Http.Json;
             Console.WriteLine("No response from api");
         }
         Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
         StateHasChanged();
     }
 
@@ -181,35 +183,85 @@ using System.Net.Http.Json;
             Alias = keyForm.alias,
             InstanceID = keyForm.key,
         };
-        
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/claim");
-
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/claim", packet);
             packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
         }
         catch (Exception e)
         {
             Console.WriteLine("No response from api");
         }
-        
         Console.WriteLine(packet.Success);
-        authPacket.Success = packet.Success;
+        successSate = packet.Success;
+        StateHasChanged();
+    }
+
+    async void GetAliases()
+    {
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        var packet = new AliasListPacket()
+        {
+            RetrievalPacket = retrievalPacket,
+            Aliases = new List<string>()
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/list", packet);
+            packet = await response.Content.ReadFromJsonAsync<AliasListPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        
+        Console.WriteLine($"Get Aliases returned {packet.Aliases.Count()} Aliases");
+        aliasList.Clear();
+        foreach (var alias in packet.Aliases)
+        {
+            Console.WriteLine(alias);
+            aliasList.Add(alias);
+        }
+        aliasDisplay = true;
+        successSate = packet.Success;
         StateHasChanged();
     }
 
     async void GetIP()
     {
-        
+        aliasDisplay = false;
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/fetch", retrievalPacket);
+            retrievalPacket = await response.Content.ReadFromJsonAsync<RetrievalPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        successSate = retrievalPacket.Success;
+        StateHasChanged();
     }
 
     protected override Task OnInitializedAsync()
     {
         authPacket = new AuthPacket();
         userform = new UserForm();
-        keyForm = new KeyForm();
+        keyForm = new KeyForm() {key = "InstanceKey"};
+        client = ClientFactory.CreateClient();
+        retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
+        aliasDisplay = false;
+        aliasList = new List<string>();
+        baseAddress = Environment.GetEnvironmentVariable("Endpoint");
         return base.OnInitializedAsync();
     }
 

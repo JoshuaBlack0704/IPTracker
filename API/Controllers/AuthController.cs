@@ -22,7 +22,7 @@ namespace API.Controllers
         public async Task<AuthPacket> Login(AuthPacket packet)
         {
             var server = new MongoDataAccess.MongoContext(configuration.GetConnectionString("mongo"));
-            packet.Success = await MongoDataAccess.MongoUserManager.CheckCredentialsAny(server, packet.UserName, packet.Password) != ObjectId.Empty;
+            packet.Success = await server.CheckCredentialsAny(packet.UserName, packet.Password) != ObjectId.Empty;
             Task.Run(() => Console.WriteLine($"Recieved request for username: {packet.UserName} with result: {packet.Success}"));
             return packet;
         }

@@ -21,7 +21,7 @@ namespace API.Controllers
         public async Task<AuthPacket> AddNewUser(AuthPacket packet)
         {
             var server = new MongoDataAccess.MongoContext(configuration.GetConnectionString("mongo"));
-            packet.Success = await MongoDataAccess.MongoUserManager.AddNewUserAsync(packet.UserName, packet.Password, server);
+            packet.Success = await server.AddNewUserAsync(packet.UserName, packet.Password);
             Console.WriteLine($"Recieved request for for new user: {packet.UserName} with result: {packet.Success}");
             return packet;
         }

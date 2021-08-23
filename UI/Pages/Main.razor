@@ -7,28 +7,43 @@
 @inject IHttpClientFactory ClientFactory
 
 <div class="main">
-    <div class="box top">
-        <p class="ipDisplay">192.168.1.1</p>
-    </div>
+    @if (aliasDisplay)
+    {
+        @foreach (var alias in aliasList)
+        {
+            <div class="box top">
+                <p class="pingAlias">@alias</p>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="box top">
+            <p class="ipDisplay">@retrievalPacket.Ip</p><hr/>
+            <p>@retrievalPacket.LastUpdated</p>
+        </div>
+    }
+    
     <div class="bottom">
         <div class="authGrid">
             <div class="authForms">
                 <EditForm Model="@userform">
                     <DataAnnotationsValidator/>
                     <ValidationSummary/>
-                    <div class="authFormSection">                    
+                    <div class="authFormSection">
                         <InputText placeholder="Username" @bind-Value="userform.UserName">Username</InputText>
                     </div>
-                    <div class="authFormSection">                    
+                    <div class="authFormSection">
                         <InputText placeholder="Password" @bind-Value="userform.Password">Password</InputText>
                     </div>
-                    <div class="authFormSection">                    
+                    <div class="authFormSection">
                         <button class="authButton buttonStyle" @onclick="CheckCredentials" type="submit">Cache User</button>
                         <button class="authButton buttonStyle" @onclick="AddCredentials" type="submit">Add User</button>
+                        <button class="authButton buttonStyle" @onclick="GetAliases" type="submit">Get Aliases For User</button>
                     </div>
                 </EditForm>
             </div>
-            @if (authPacket.Success)
+            @if (successSate)
             {
                 <div class="box authResult successState">
                     Success
@@ -40,17 +55,17 @@
                     Failure
                 </div>
             }
-            
+
         </div>
         <div class="controlGrid">
-            <EditForm Model="@keyForm" OnValidSubmit="@AddCredentials">
+            <EditForm Model="@keyForm">
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
-                <div class="box controlForm">                    
+                <div class="box controlForm">
                     <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="InstanceKey" @bind-Value="keyForm.key"></InputText>
                     <InputText style="width: 100%; text-align: center;"class="controlInput" placeholder="Alias" @bind-Value="keyForm.alias"></InputText>
                 </div>
-                <div class="box controlForm">                    
+                <div class="box controlForm">
                     <button class="controlButton buttonStyle" @onclick="ClaimAlias" type="submit">Claim Alias for User</button>
                     <button class="controlButton buttonStyle" @onclick="GetIP" type="submit">Get IP for Alias</button>
                 </div>
@@ -63,17 +78,20 @@
     AuthPacket authPacket;
     UserForm userform;
     KeyForm keyForm;
+    RetrievalPacket retrievalPacket;
+    HttpClient client;
+    bool aliasDisplay;
+    List<string> aliasList;
+    bool successSate;
+    string baseAddress;
 
     async void CheckCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/auth");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/auth", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -82,19 +100,17 @@
         }
         
         Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
         StateHasChanged();
     }
 
     async void AddCredentials()
     {
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/user");
-        
         authPacket.UserName = userform.UserName;
         authPacket.Password = userform.Password;
         try
         {
-            var response = await client.PostAsJsonAsync(client.BaseAddress, authPacket);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/user", authPacket);
             authPacket = await response.Content.ReadFromJsonAsync<AuthPacket>();
         }
         catch (Exception e)
@@ -102,6 +118,7 @@
             Console.WriteLine("No response from api");
         }
         Console.WriteLine(authPacket.Success);
+        successSate = authPacket.Success;
         StateHasChanged();
     }
 
@@ -113,35 +130,85 @@
             Alias = keyForm.alias,
             InstanceID = keyForm.key,
         };
-        
-        var client = ClientFactory.CreateClient();
-        client.BaseAddress = new Uri("http://localhost:5005/api/claim");
-
         try
         {
-            var response = await client.PostAsJsonAsync("http://localhost:5005/api/claim", packet);
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/claim", packet);
             packet = await response.Content.ReadFromJsonAsync<ClaimPacket>();
         }
         catch (Exception e)
         {
             Console.WriteLine("No response from api");
         }
-        
         Console.WriteLine(packet.Success);
-        authPacket.Success = packet.Success;
+        successSate = packet.Success;
+        StateHasChanged();
+    }
+
+    async void GetAliases()
+    {
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        var packet = new AliasListPacket()
+        {
+            RetrievalPacket = retrievalPacket,
+            Aliases = new List<string>()
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/list", packet);
+            packet = await response.Content.ReadFromJsonAsync<AliasListPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        
+        Console.WriteLine($"Get Aliases returned {packet.Aliases.Count()} Aliases");
+        aliasList.Clear();
+        foreach (var alias in packet.Aliases)
+        {
+            Console.WriteLine(alias);
+            aliasList.Add(alias);
+        }
+        aliasDisplay = true;
+        successSate = packet.Success;
         StateHasChanged();
     }
 
     async void GetIP()
     {
-        
+        aliasDisplay = false;
+        retrievalPacket = new RetrievalPacket()
+        {
+            AuthPacket = authPacket,
+            Alias = keyForm.alias,
+        };
+        try
+        {
+            var response = await client.PostAsJsonAsync(baseAddress + "/api/fetch", retrievalPacket);
+            retrievalPacket = await response.Content.ReadFromJsonAsync<RetrievalPacket>();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("No response from api");
+        }
+        successSate = retrievalPacket.Success;
+        StateHasChanged();
     }
 
     protected override Task OnInitializedAsync()
     {
         authPacket = new AuthPacket();
         userform = new UserForm();
-        keyForm = new KeyForm();
+        keyForm = new KeyForm() {key = "InstanceKey"};
+        client = ClientFactory.CreateClient();
+        retrievalPacket = new RetrievalPacket() {AuthPacket = authPacket, Ip = "999.999.999.999:9999"};
+        aliasDisplay = false;
+        aliasList = new List<string>();
+        baseAddress = Environment.GetEnvironmentVariable("Endpoint");
         return base.OnInitializedAsync();
     }
 

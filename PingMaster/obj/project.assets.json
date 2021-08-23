@@ -176,6 +176,16 @@
             "rid": "win"
           }
         }
+      },
+      "SharedModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/SharedModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedModels.dll": {}
+        }
       }
     }
   },
@@ -483,12 +493,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SharedModels/1.0.0": {
+      "type": "project",
+      "path": "../SharedModels/SharedModels.csproj",
+      "msbuildProject": "../SharedModels/SharedModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "BCrypt.Net-Next >= 4.0.2",
-      "MongoDB.Driver >= 2.13.1"
+      "MongoDB.Driver >= 2.13.1",
+      "SharedModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -517,7 +533,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
+              "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

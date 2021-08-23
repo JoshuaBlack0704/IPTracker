@@ -1,4 +1,5 @@
 ﻿
+using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
@@ -17,6 +18,8 @@ namespace API.Models
         public string Alias { get; set; }
         [BsonElement("ClaimingUser")]
         public ObjectId ClaimingUser { get; set; }
+        [BsonElement("LastUpdated")]
+        public DateTime LastUpdated { get; set; }
     }
 }
 

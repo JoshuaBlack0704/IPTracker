@@ -44,11 +44,8 @@ namespace MongoDataAccess
         {
             server = new MongoClient(connection);
         }
-    }
-
-    public static class MongoUserManager
-    {
-        public static async Task<bool> AddNewUserAsync(string username, string password, MongoContext context, string pepper = null)
+        
+        public async Task<bool> AddNewUserAsync(string username, string password, string pepper = null)
         {
             UserLoginModel user = new UserLoginModel() {Username = username};
 
@@ -58,8 +55,8 @@ namespace MongoDataAccess
 
             var cancelToken = new CancellationTokenSource();
 
-            context.SetDatabase("Authentication");
-            var Users = context.database.GetCollection<UserLoginModel>("Users");
+            SetDatabase("Authentication");
+            var Users = database.GetCollection<UserLoginModel>("Users");
             var userFilter = Builders<UserLoginModel>.Filter.Eq("username", username);
             if (await Users.CountDocumentsAsync(userFilter) > 0)
             {
@@ -70,7 +67,7 @@ namespace MongoDataAccess
 
 
             //Salt entry and object id retrieval
-            var Salts = context.database.GetCollection<EntryModel>("Salts");
+            var Salts = database.GetCollection<EntryModel>("Salts");
             EntryModel saltEntry = new EntryModel() {key = salt};
             await Salts.InsertOneAsync(saltEntry);
             var saltFilter = Builders<EntryModel>.Filter.Eq("key", salt);
@@ -79,7 +76,7 @@ namespace MongoDataAccess
             
 
             //Password entry and object id
-            var Hashes = context.database.GetCollection<EntryModel>("Hashes");
+            var Hashes = database.GetCollection<EntryModel>("Hashes");
             EntryModel hashEntry = new EntryModel() {key = hashedPassword};
             await Hashes.InsertOneAsync(hashEntry);
             var hashFilter = Builders<EntryModel>.Filter.Eq("key", hashedPassword);
@@ -92,13 +89,13 @@ namespace MongoDataAccess
             return true;
 
         }
-
-        public static async Task<ObjectId> CheckCredentialsAny(MongoContext server, string username, string password)
+        
+        public async Task<ObjectId> CheckCredentialsAny(string username, string password)
         {
-            server.SetDatabase("Authentication");
-            var users = server.database.GetCollection<UserLoginModel>("Users");
-            var salts = server.database.GetCollection<EntryModel>("Salts");
-            var hashes = server.database.GetCollection<EntryModel>("Hashes");
+            SetDatabase("Authentication");
+            var users = database.GetCollection<UserLoginModel>("Users");
+            var salts = database.GetCollection<EntryModel>("Salts");
+            var hashes = database.GetCollection<EntryModel>("Hashes");
             var userFilter = Builders<UserLoginModel>.Filter.Eq("username", username);
             bool isUser = await users.CountDocumentsAsync(userFilter) > 0;
 
@@ -141,7 +138,14 @@ namespace MongoDataAccess
                 return hashedPassword == hash;
             }
         }
+        
+    }
 
+    public static class MongoUserManager
+    {
+        
+
+        
         
     }
 

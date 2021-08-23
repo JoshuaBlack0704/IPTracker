@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PingMaster
@@ -7,6 +10,7 @@ namespace PingMaster
     using System.Net.Http;
     using System.Net.Http.Json;
     using System.Threading;
+    using SharedModels;
 
     class Program
     {
@@ -15,16 +19,45 @@ namespace PingMaster
         static string proccessKey;
         static void Main(string[] args)
         {
-            proccessKey = BCrypt.Net.BCrypt.HashPassword(random.Next(0, int.MaxValue).ToString(), 11);
-            Console.WriteLine(proccessKey);
-            client.BaseAddress = new Uri("http://localhost:5005/api/ping");
+            if (File.Exists("key.txt") == false)
+            {
+                Console.WriteLine("Creating new key:\n");
+                using (FileStream fs = File.Create("key.txt"))     
+                {    
+                    // Add some text to file    
+                    Byte[] key = new UTF8Encoding(true).GetBytes(BCrypt.Net.BCrypt.HashPassword(random.Next(0, int.MaxValue).ToString(), 11));    
+                    fs.Write(key, 0, key.Length);    
+                } 
+            }
+            else
+            {
+                Console.WriteLine("pre-generated key found:\n");
+            }
+
+            string letter;
+            using (StreamReader sr = File.OpenText("key.txt"))     
+            {
+                while ((letter = sr.ReadLine()) != null)
+                {
+                    proccessKey += letter;
+                }
+            } 
+            
+            Console.WriteLine(proccessKey + "\n");
+            
+            var endpoint = Environment.GetEnvironmentVariable("Endpoint");
+
+            Console.WriteLine($"Using URL: {endpoint}");
+            client.BaseAddress = new Uri(endpoint);
             void Ping()
             {
                 var x = Task.Run(() => client.PostAsJsonAsync(client.BaseAddress, proccessKey));
                 x.Wait();
+                var response = x.Result;
+                var message = Task.Run(() => response.Content.ReadFromJsonAsync<PingResponse>());
+                message.Wait();
             }
-
-
+            
             while (true)
             {
                 try
@@ -36,7 +69,7 @@ namespace PingMaster
                     Console.WriteLine("\nTimeout\n");
                     Console.WriteLine(proccessKey);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(60000);
             }
 
         }
