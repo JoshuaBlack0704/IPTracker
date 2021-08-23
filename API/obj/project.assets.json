@@ -2012,7 +2012,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "MongoDataAccess/1.0.0": {
+      "MongoDB.Usermanager.Context/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -2020,10 +2020,10 @@
           "MongoDB.Driver": "2.13.1"
         },
         "compile": {
-          "bin/placeholder/MongoDataAccess.dll": {}
+          "bin/placeholder/MongoDB.Usermanager.Context.dll": {}
         },
         "runtime": {
-          "bin/placeholder/MongoDataAccess.dll": {}
+          "bin/placeholder/MongoDB.Usermanager.Context.dll": {}
         }
       },
       "SharedModels/1.0.0": {
@@ -6765,10 +6765,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "MongoDataAccess/1.0.0": {
+    "MongoDB.Usermanager.Context/1.0.0": {
       "type": "project",
-      "path": "../MongoDataAccess/MongoDataAccess.csproj",
-      "msbuildProject": "../MongoDataAccess/MongoDataAccess.csproj"
+      "path": "../MongoDataAccess/MongoDB.Usermanger.Context.csproj",
+      "msbuildProject": "../MongoDataAccess/MongoDB.Usermanger.Context.csproj"
     },
     "SharedModels/1.0.0": {
       "type": "project",
@@ -6780,7 +6780,7 @@
     "net5.0": [
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
       "MongoDB.Driver >= 2.13.1",
-      "MongoDataAccess >= 1.0.0",
+      "MongoDB.Usermanager.Context >= 1.0.0",
       "SharedModels >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.1.5"
     ]
@@ -6812,8 +6812,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj": {
-              "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDataAccess.csproj"
+            "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDB.Usermanger.Context.csproj": {
+              "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\MongoDataAccess\\MongoDB.Usermanger.Context.csproj"
             },
             "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj": {
               "projectPath": "C:\\Users\\Josh\\Documents\\Github\\IPTracker\\SharedModels\\SharedModels.csproj"

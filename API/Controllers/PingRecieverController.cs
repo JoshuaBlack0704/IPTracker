@@ -11,6 +11,7 @@ namespace API.Controllers0
     using Models;
     using MongoDB.Bson;
     using MongoDB.Driver;
+    using MongoDB.Usermanager.Context;
     using System.Threading.Tasks;
 
     [Route("api")]
@@ -18,12 +19,12 @@ namespace API.Controllers0
     public class PingRecieverController : ControllerBase
     {
         private IConfiguration configuration;
-        private MongoDataAccess.MongoContext server;
+        private MongoContext server;
 
-        public PingRecieverController(IConfiguration config, MongoDataAccess.MongoContext s)
+        public PingRecieverController(IConfiguration config)
         {
             configuration = config;
-            server = s;
+            server = new MongoDataAccess.MongoContext(configuration.GetConnectionString("mongo"));
         }
         
         [HttpPost("ping")]
@@ -35,7 +36,7 @@ namespace API.Controllers0
             return new PingResponse() {message = "done"};
         }
 
-        public async Task AddPing(MongoDataAccess.MongoContext server, string clientKey, string hostIP)
+        public async Task AddPing(MongoContext server, string clientKey, string hostIP)
         {
             server.SetDatabase("ExternalIPTracking");
             var pings = server.database.GetCollection<PingEntry>("Pings");

@@ -9,11 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PingMaster", "PingMaster\Pi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedModels", "SharedModels\SharedModels.csproj", "{FD52664B-94C1-428D-90E6-488EEEFB4E4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDataAccess", "MongoDataAccess\MongoDataAccess.csproj", "{FEED9D0B-1935-4140-97A9-E24E734CEE23}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{3B19DE2B-291A-4A76-BCAD-018628DA0560}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{75918262-4DD5-47B3-920E-334966879103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{75918262-4DD5-47B3-920E-334966879103}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{FD52664B-94C1-428D-90E6-488EEEFB4E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD52664B-94C1-428D-90E6-488EEEFB4E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD52664B-94C1-428D-90E6-488EEEFB4E4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEED9D0B-1935-4140-97A9-E24E734CEE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEED9D0B-1935-4140-97A9-E24E734CEE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEED9D0B-1935-4140-97A9-E24E734CEE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEED9D0B-1935-4140-97A9-E24E734CEE23}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B19DE2B-291A-4A76-BCAD-018628DA0560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B19DE2B-291A-4A76-BCAD-018628DA0560}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B19DE2B-291A-4A76-BCAD-018628DA0560}.Release|Any CPU.ActiveCfg = Release|Any CPU
